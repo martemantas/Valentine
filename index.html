@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emily</title>
+    <style>
+        body {
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-image: url("wallpaper.png");
+        }
+        #btn-yes {
+            background-color: green;
+        }
+        #btn-no {
+            background-color: red;
+        }
+        #btn-yes, #btn-no {
+            border: none;
+            border-radius: 10px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 20px;
+        }
+        a{
+            text-decoration: none;
+            color: #fff;
+        }
+        img{
+            max-width: 100%;
+            max-height: 100vh;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Will you be my Valentine?</h1>
+    <div>
+        <button id="btn-yes"><a href="yey.html">Yes</a></button>
+        <button id="btn-no" onclick="handleNoClick()">No</button>
+    </div>
+    <img src="giphy.gif" alt="giff" style="padding-top: 30px;">
+</body>
+</html>
+
+<script>
+    const messages = ['Pretty please?','Are you sure?','Why so mean :(','Wrong button -_-'];
+    var messageIndex = 0;
+    
+    function handleNoClick(){
+        const yesBtn = document.querySelector("#btn-yes");
+        const noBtn = document.querySelector("#btn-no");
+        noBtn.textContent = messages[messageIndex];
+        messageIndex = (messageIndex + 1) % messages.length;
+        const currentSize = parseFloat(window.getComputedStyle(yesBtn).fontSize);
+        yesBtn.style.fontSize = `${currentSize * 1.5}px`;
+    }
+</script>
